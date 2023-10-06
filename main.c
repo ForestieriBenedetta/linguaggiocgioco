@@ -2,13 +2,15 @@
 
 int main() {
     char scelta;
+    char nome[10];
     int punteggio = 0;
+    int gioco_in_corso = 1;  // Inizialmente, il gioco è in corso
 
     // Presentazione gioco e scopo
     printf("Benvenuto a Hogwarts!\n");
     printf("Rispondi alle domande e guadagna punti!\n");
 
-    while (1) {
+    while (gioco_in_corso) {
         // Menu 
         printf("\nMenu:\n");
         printf("A) Iniziare una nuova partita\n");
@@ -19,23 +21,23 @@ int main() {
         // se l'utente decide di uscire 
         if (scelta == 'B' || scelta == 'b') {
             printf("Non puoi andare a Hogwarts senza sapere...\n");
-             // Termina il gioco 
+            gioco_in_corso = 0;  // Termina il gioco
         }
-        // se l'utente decide di entare
+        // se l'utente decide di entrare
         else if (scelta == 'A' || scelta == 'a') {
-            char nome[100];
+            
             int risposte_corrette = 0;
 
             // Richiedi il nome del giocatore
             printf("Inserisci il tuo nome: ");
             scanf("%s", nome);
-
+            
             // Domanda 1
             printf("\nDomanda 1:\n");
             printf("A che casa appartiene Harry Potter?\n");
             printf("A) Tassorosso\n");
             printf("B) Serpeverde\n");
-            printf("C) Grifondo\n");
+            printf("C) Grifondoro\n");
             char risposta1;
             scanf(" %c", &risposta1);
             if (risposta1 == 'C' || risposta1 == 'c') {
@@ -43,10 +45,9 @@ int main() {
                 risposte_corrette++;
             } else {
                 printf("Risposta errata. Non preoccuparti, imparerai presto. A Hogwarts tutti i principianti sono uguali.\n");
-
             }
 
-            // Domanda 2
+             // Domanda 2
             printf("\nDomanda 2:\n");
             printf("Come si chiama la fenice di Albus Silente?\n");
             printf("A) Fanny\n");
@@ -77,10 +78,8 @@ int main() {
             }
 
             // Mostra il punteggio finale
-            printf("\nEccoci, %s! Hai totalizzato %d punti su 3.\n", nome, risposte_corrette * 10);
-        } else {
-            printf("Scelta non valida. Si prega di selezionare A o B.\n");
-        }
+            printf("\nCiao, %s! Hai totalizzato %d punti su 30.\n", nome, risposte_corrette * 10);
+        } 
     }
 
     return 0;
